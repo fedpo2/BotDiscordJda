@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class PlayerManager {
     private static PlayerManager INSTANCE;
-    private Map<Long, GuildMusicManager> musicManager;
+    public static Map<Long, GuildMusicManager> musicManager;
     private AudioPlayerManager audioPlayerManager;
 
     public PlayerManager() {

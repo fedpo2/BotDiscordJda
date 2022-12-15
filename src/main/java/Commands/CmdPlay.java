@@ -11,7 +11,7 @@ import java.net.URISyntaxException;
 
 public class CmdPlay {
 
-    public void execute(EventData event) {
+    public void execute(EventData event, boolean skip) {
         if (!event.memberVoiceState.inAudioChannel()){
             event.textChannel.sendMessage("necesitas estar en un canal diferente para que este comando ande").queue();
             return;

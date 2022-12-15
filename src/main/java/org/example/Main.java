@@ -7,6 +7,7 @@ import Libreria.EventData;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.managers.AudioManager;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
@@ -49,26 +50,15 @@ public class Main extends ListenerAdapter {
 
         System.out.println("cmd = " +ed.cmd);
         switch (ed.cmd) {
-            case "join" ->
-                /*try {
-                    vc = guild.getVoiceChannelsByName("General", true).get(0);
-                }catch (Exception e ){
-                    System.out.println(e);
-                    vc = null;
-                }*/
-                //am.setSendingHandler(new Send);
-                    ed.am.openAudioConnection(ed.vc);
-            case "leave" -> {
-                try {
-                    ed.am.closeAudioConnection();
-                } catch (Exception e) {
-                    System.err.println(e);
-                }
-            }
-            case "play" -> play.execute(ed);
-            case "ping" -> {
-                ping.execute(ed);
-            }
+            case "join" -> ed.am.openAudioConnection(ed.vc);
+            case "leave" -> leaveChannel(ed.am);
+            case "play" -> play.execute(ed, false);
+            case "ping" -> ping.execute(ed);
+
         }
+    }
+
+    private void leaveChannel(AudioManager am){
+        try {am.closeAudioConnection();} catch (Exception e) {System.err.println(e);}
     }
 }
