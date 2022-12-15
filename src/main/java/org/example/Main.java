@@ -18,13 +18,13 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
 public class Main extends ListenerAdapter {
-    token tk = new token();
+    private static Token tk = new Token();
     CmdPlay play = new CmdPlay();
     CmdPing ping = new CmdPing();
 
     public static void main(String[] args) {
 
-        JDABuilder.create(token.bot, GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES, GatewayIntent.MESSAGE_CONTENT,
+        JDABuilder.create(tk.token, GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES, GatewayIntent.MESSAGE_CONTENT,
                 GatewayIntent.GUILD_VOICE_STATES)
                 .enableCache(CacheFlag.VOICE_STATE)
                 //.addEventListeners(jdaCommands)
