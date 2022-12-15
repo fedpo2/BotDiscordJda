@@ -12,6 +12,9 @@ target/
 *.iml
 *.ipr
 
+### token ###
+src/main/java/org/example/token.java
+
 ### Eclipse ###
 .apt_generated
 .classpath
