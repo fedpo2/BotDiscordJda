@@ -43,7 +43,7 @@ public class PlayerManager {
             public void trackLoaded(AudioTrack audioTrack) {
                 musicManager.manager.queue(audioTrack);
 
-                textChannel.sendMessage("Adding to queue ** ")
+                textChannel.sendMessage("Adding to queue ")
                         .queue();
             }
 
@@ -52,7 +52,7 @@ public class PlayerManager {
                 final List<AudioTrack> tracks = audioPlaylist.getTracks();
                 if (!tracks.isEmpty()){
                     musicManager.manager.queue(tracks.get(0));
-                    textChannel.sendMessage("Adding to queue ** ")
+                    textChannel.sendMessage("Adding to queue ")
                             .queue();
                 }
 

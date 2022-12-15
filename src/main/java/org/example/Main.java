@@ -3,17 +3,10 @@ package org.example;
 import Commands.CmdPing;
 import Commands.CmdPlay;
 import Libreria.EventData;
-import ca.tristan.jdacommands.ExecuteArgs;
-import ca.tristan.jdacommands.JDACommands;
+
 import net.dv8tion.jda.api.JDABuilder;
-import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.MessageChannel;
-import net.dv8tion.jda.api.entities.VoiceChannel;
-import net.dv8tion.jda.api.events.Event;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import net.dv8tion.jda.api.managers.AudioManager;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
@@ -55,9 +48,8 @@ public class Main extends ListenerAdapter {
         System.out.printf("\n");
 
         System.out.println("cmd = " +ed.cmd);
-        switch (ed.cmd){
-
-            case "!join":
+        switch (ed.cmd) {
+            case "join" ->
                 /*try {
                     vc = guild.getVoiceChannelsByName("General", true).get(0);
                 }catch (Exception e ){
@@ -65,26 +57,18 @@ public class Main extends ListenerAdapter {
                     vc = null;
                 }*/
                 //am.setSendingHandler(new Send);
-                ed.am.openAudioConnection(ed.vc);
-                break;
-
-            case "!leave":
-                try{
+                    ed.am.openAudioConnection(ed.vc);
+            case "leave" -> {
+                try {
                     ed.am.closeAudioConnection();
-                }catch (Exception e){
+                } catch (Exception e) {
                     System.err.println(e);
                 }
-                break;
-
-            case "!play":
-                play.execute(ed);
-                break;
-
-            case "!ping":
+            }
+            case "play" -> play.execute(ed);
+            case "ping" -> {
                 ping.execute(ed);
-                System.out.println("event = " + event);
-                break;
-
+            }
         }
     }
 }
