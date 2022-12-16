@@ -1,7 +1,7 @@
 package Commands;
 
 import Libreria.EventData;
-import net.dv8tion.jda.api.entities.VoiceChannel;
+import Libreria.IComando;
 import net.dv8tion.jda.api.entities.channel.middleman.AudioChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
 import org.example.PlayerManager;
@@ -9,11 +9,13 @@ import java.net.URI;
 
 import java.net.URISyntaxException;
 
-public class CmdPlay {
+public class CmdPlay implements IComando {
 
+    @Override
     public void execute(EventData event, boolean skip) {
         if (!event.memberVoiceState.inAudioChannel()){
-            event.textChannel.sendMessage("necesitas estar en un canal diferente para que este comando ande").queue();
+            event.textChannel.sendMessage("necesitas estar en un canal diferente para que este comando ande")
+                    .queue();
             return;
         }
 
@@ -41,4 +43,16 @@ public class CmdPlay {
             return false;
         }
     }
+
+
+    @Override
+    public String getName(String name) {
+        return IComando.super.getName(name);
+    }
+
+    @Override
+    public void execute(EventData event) {
+
+    }
+
 }
