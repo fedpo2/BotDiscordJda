@@ -26,6 +26,11 @@ public class CmdPlay implements IComando {
             audioManager.openAudioConnection(memberChannel);
 
         }
+
+        if (skip){
+            PlayerManager.getINSTANCE().skipSong(event.textChannel);
+            return;
+        }
         String link = String.join(" ", event.getArgs());
 
         if (!isUrl(link)){

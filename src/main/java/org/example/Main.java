@@ -46,18 +46,21 @@ public class Main extends ListenerAdapter {
         System.out.println("cmd = " + ed.cmd);
         switch (ed.cmd) {
             case "join" -> ed.am.openAudioConnection(ed.vc);
-            case "leave" -> leaveChannel(ed.am);
+            case "leave" -> leaveChannel(ed);
+            case "skip" -> play.execute(ed, true);
             case "play" -> play.execute(ed, false);
             case "ping" -> ping.execute(ed);
             case "help" -> help.execute(ed);
+
         }
     }
 
-    private void leaveChannel(AudioManager am) {
+    private void leaveChannel(EventData event) {
         try {
-            am.closeAudioConnection();
+            event.am.closeAudioConnection();
         } catch (Exception e) {
             System.err.println(e);
         }
+        play = new CmdPlay();
     }
 }

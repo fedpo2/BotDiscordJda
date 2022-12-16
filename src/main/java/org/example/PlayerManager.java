@@ -70,6 +70,12 @@ public class PlayerManager {
         });
     }
 
+
+    public void skipSong(TextChannel textChannel){
+        final GuildMusicManager guildMusicManager = getGuildMusicManager(textChannel.getGuild());
+        guildMusicManager.manager.nextTrack();
+    }
+
     public static PlayerManager getINSTANCE(){
         if (INSTANCE == null) {
             INSTANCE = new PlayerManager();
