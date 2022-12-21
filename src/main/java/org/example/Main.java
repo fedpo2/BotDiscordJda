@@ -45,12 +45,13 @@ public class Main extends ListenerAdapter {
 
         System.out.println("cmd = " + ed.cmd);
         switch (ed.cmd) {
-            case "join" -> ed.am.openAudioConnection(ed.vc);
-            case "leave" -> leaveChannel(ed);
-            case "skip" -> play.execute(ed, true);
-            case "play" -> play.execute(ed, false);
-            case "ping" -> ping.execute(ed);
-            case "help" -> help.execute(ed);
+            case "j": case "join" -> ed.am.openAudioConnection(ed.vc);
+            case "l": case "leave" -> leaveChannel(ed);
+            case "s": case "skip" -> play.execute(ed, true);
+            case "p": case "play" -> play.execute(ed, false);
+            case "pi": case "ping" -> ping.execute(ed);
+            case "h": case "help" -> help.execute(ed);
+            case "np" >
 
         }
     }

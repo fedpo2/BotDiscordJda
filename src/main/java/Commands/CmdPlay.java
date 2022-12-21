@@ -49,12 +49,6 @@ public class CmdPlay implements IComando {
         }
     }
 
-
-    @Override
-    public String getName(String name) {
-        return IComando.super.getName(name);
-    }
-
     @Override
     public void execute(EventData event) {
 

@@ -10,11 +10,6 @@ public class CmdHelp implements IComando {
 
 
     @Override
-    public String getName(String name) {
-        return IComando.super.getName(name);
-    }
-
-    @Override
     public void execute(EventData event) {
         EmbedBuilder eb = new EmbedBuilder();
 
@@ -32,8 +27,12 @@ public class CmdHelp implements IComando {
 
         eb.setDescription("Command all public commands of my bot");
 
-        eb.addField("!play 'song'", "Plays a youtube song  //still wip cant manually skip a song", false);
-        eb.addField("!ping", "Returns a pong to test the conection of the bot", false);
+        eb.addField("!play | !p 'song' ", "Plays a youtube song  //still wip cant manually skip a song", false);
+        eb.addField("!skip | !s", "Skips np song", false);
+        eb.addField("!leave | !l","leaves voiceChannel and removes queue" ,false);
+        eb.addField("!join | !j", "Joins a voice channel", false);
+        eb.addField("!ping | !pi", "Returns a pong to test the conection of the bot", false);
+        eb.addField("!help ! !h", "Shows this helpBox", false);
 
 
         event.textChannel.sendMessageEmbeds(eb.build())
