@@ -32,6 +32,7 @@ public class CmdHelp implements IComando {
         eb.addField("!leave | !l","leaves voiceChannel and removes queue" ,false);
         eb.addField("!join | !j", "Joins a voice channel", false);
         eb.addField("!ping | !pi", "Returns a pong to test the conection of the bot", false);
+        eb.addField("!copiame | !co 'mensaje'", "Escribe lo que le pidas", false);
         eb.addField("!help ! !h", "Shows this helpBox", false);
 
 

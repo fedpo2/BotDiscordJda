@@ -4,7 +4,7 @@ import Libreria.EventData;
 import Libreria.IComando;
 import net.dv8tion.jda.api.entities.channel.middleman.AudioChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
-import org.example.PlayerManager;
+import Libreria.PlayerManager;
 import java.net.URI;
 
 import java.net.URISyntaxException;

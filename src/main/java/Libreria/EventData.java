@@ -1,7 +1,9 @@
 package Libreria;
 
-import net.dv8tion.jda.api.entities.*;
-import net.dv8tion.jda.api.entities.channel.Channel;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.GuildVoiceState;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.entities.channel.concrete.VoiceChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -18,11 +20,11 @@ public class EventData {
     public GuildVoiceState memberVoiceState;
     public Member self;
     public Member member;
-    public Channel channel;
+    public Message msg;
     public AudioManager am;
     public boolean hasValidPrefix;
     public EventData(MessageReceivedEvent event){
-        this.channel = event.getChannel();
+        this.msg = event.getMessage();
         this.gd = event.getGuild();
         this.txt = event.getMessage().getContentRaw().toLowerCase();
         checkForValidPrefix("!");

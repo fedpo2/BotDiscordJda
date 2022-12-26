@@ -1,4 +1,4 @@
-package org.example;
+package Program;
 
 import Commands.CmdCopy;
 import Commands.CmdHelp;
@@ -8,7 +8,6 @@ import Libreria.EventData;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import net.dv8tion.jda.api.managers.AudioManager;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 

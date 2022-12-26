@@ -1,4 +1,4 @@
-package org.example;
+package Libreria;
 
 import com.sedmelluq.discord.lavaplayer.player.*;
 import com.sedmelluq.discord.lavaplayer.source.*;
