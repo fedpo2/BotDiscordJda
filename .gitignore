@@ -13,7 +13,7 @@ target/
 *.ipr
 
 ### token ###
-src/main/java/org/example/token.java
+src/main/java/Program/Token.java
 
 ### Eclipse ###
 .apt_generated

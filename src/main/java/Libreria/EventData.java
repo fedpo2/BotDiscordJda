@@ -1,6 +1,9 @@
 package Libreria;
 
-import net.dv8tion.jda.api.entities.*;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.GuildVoiceState;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.entities.channel.concrete.VoiceChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -8,7 +11,6 @@ import net.dv8tion.jda.api.managers.AudioManager;
 
 public class EventData {
     public  Guild gd;
-    public  Message msg;
     public  String txt;
     public String[] arr;
     public String cmd;
@@ -18,20 +20,21 @@ public class EventData {
     public GuildVoiceState memberVoiceState;
     public Member self;
     public Member member;
-
+    public Message msg;
     public AudioManager am;
     public boolean hasValidPrefix;
     public EventData(MessageReceivedEvent event){
-
+        this.msg = event.getMessage();
         this.gd = event.getGuild();
-        this.txt = event.getMessage().getContentRaw();
+        this.txt = event.getMessage().getContentRaw().toLowerCase();
         checkForValidPrefix("!");
-        this.cmd = arr[0];
 
         try{
             this.am  = gd.getAudioManager();
             this.vc = event.getMember().getVoiceState().getChannel().asVoiceChannel();
-        }catch (Exception e){}
+        }catch (Exception e){
+            System.err.println(e);
+        }
 
         this.textChannel = event.getGuildChannel().asTextChannel();
         this.self = gd.getSelfMember();
@@ -43,9 +46,8 @@ public class EventData {
     private void checkForValidPrefix(String prefix){
         if (txt.startsWith(prefix)){
             arr = txt.split(" ");
-            cmd = arr[0];
-            cmd.replaceAll(prefix, "");
-            System.out.println("prefix = " + cmd);
+            this.cmd = arr[0].replace(prefix,"");
+            System.out.println("cmdconstruct = " + cmd);
             hasValidPrefix = true;
         }
     }

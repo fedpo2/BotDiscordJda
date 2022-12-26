@@ -1,4 +1,4 @@
-package org.example;
+package Libreria;
 
 import com.sedmelluq.discord.lavaplayer.player.*;
 import com.sedmelluq.discord.lavaplayer.source.*;
@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class PlayerManager {
     private static PlayerManager INSTANCE;
-    private Map<Long, GuildMusicManager> musicManager;
+    public static Map<Long, GuildMusicManager> musicManager;
     private AudioPlayerManager audioPlayerManager;
 
     public PlayerManager() {
@@ -43,7 +43,7 @@ public class PlayerManager {
             public void trackLoaded(AudioTrack audioTrack) {
                 musicManager.manager.queue(audioTrack);
 
-                textChannel.sendMessage("Adding to queue ** ")
+                textChannel.sendMessage("Adding to queue ")
                         .queue();
             }
 
@@ -52,7 +52,7 @@ public class PlayerManager {
                 final List<AudioTrack> tracks = audioPlaylist.getTracks();
                 if (!tracks.isEmpty()){
                     musicManager.manager.queue(tracks.get(0));
-                    textChannel.sendMessage("Adding to queue ** ")
+                    textChannel.sendMessage("Adding to queue ")
                             .queue();
                 }
 
@@ -68,6 +68,12 @@ public class PlayerManager {
 
             }
         });
+    }
+
+
+    public void skipSong(TextChannel textChannel){
+        final GuildMusicManager guildMusicManager = getGuildMusicManager(textChannel.getGuild());
+        guildMusicManager.manager.nextTrack();
     }
 
     public static PlayerManager getINSTANCE(){
